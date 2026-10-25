@@ -1,8 +1,8 @@
-<p><img src="https://raw.githubusercontent.com/sabivida-mini-apps/.github/main/assets/social-first-app.png" alt="SabiVida first app: a starter page and server that verify SabiVida sign-in." width="100%"></p>
+<p><img src="https://raw.githubusercontent.com/sabivida-mini-apps/.github/main/assets/social-starter-js.png" alt="SabiVida starter with plain JavaScript: SabiVida sign-in on your server." width="100%"></p>
 
-# Your first SabiVida mini app
+# Your first SabiVida mini app, with plain JavaScript
 
-A template for a [SabiVida mini app](https://github.com/sabivida-mini-apps/partner-kit): a web page that opens inside SabiVida and a small server that verifies SabiVida's launch token. Click **Use this template** to start your own.
+A no-build JavaScript template for a [SabiVida mini app](https://github.com/sabivida-mini-apps/partner-kit): a web page that opens inside SabiVida and a small server that verifies SabiVida's launch token. Click **Use this template** to start your own.
 
 Prefer a framework? See [starter-react](https://github.com/sabivida-mini-apps/starter-react), [starter-next](https://github.com/sabivida-mini-apps/starter-next), [starter-vue](https://github.com/sabivida-mini-apps/starter-vue) and [starter-solid](https://github.com/sabivida-mini-apps/starter-solid).
 
