@@ -1,3 +1,5 @@
+<p><img src="https://raw.githubusercontent.com/sabivida-mini-apps/.github/main/assets/social-first-app.png" alt="SabiVida first app: a starter page and server that verify SabiVida sign-in." width="100%"></p>
+
 # Your first SabiVida mini app
 
 A template for a [SabiVida mini app](https://github.com/sabivida-mini-apps/partner-kit): a web page that opens inside SabiVida and a small server that verifies SabiVida's launch token. Click **Use this template** to start your own.
