@@ -6,6 +6,7 @@
   "description": "SabiVida mini app built from the starter template.",
   "scripts": {
     "start": "node server.mjs",
+    "dev:mock": "node scripts/dev-mock.mjs http://localhost:4319/ node server.mjs",
     "deploy": "node deploy.mjs"
   },
   "dependencies": {

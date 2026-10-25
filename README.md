@@ -4,6 +4,12 @@
 
 A template for a [SabiVida mini app](https://github.com/sabivida-mini-apps/partner-kit): a web page that opens inside SabiVida and a small server that verifies SabiVida's launch token. Click **Use this template** to start your own.
 
+Prefer a framework? See [first-app-react](https://github.com/sabivida-mini-apps/first-app-react), [first-app-next](https://github.com/sabivida-mini-apps/first-app-next), [first-app-vue](https://github.com/sabivida-mini-apps/first-app-vue) and [first-app-solid](https://github.com/sabivida-mini-apps/first-app-solid).
+
+## Try it without SabiVida
+
+`npm install && npm run dev:mock`, then open http://localhost:4398. A local stand-in for SabiVida frames the app, signs a test member in and answers step suggestions. It's for development only.
+
 ## Run it
 
 ```sh
