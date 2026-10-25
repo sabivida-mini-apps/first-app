@@ -1,0 +1,17 @@
+{
+  "name": "sabivida-mini-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SabiVida mini app built from the starter template.",
+  "scripts": {
+    "start": "node server.mjs",
+    "deploy": "node deploy.mjs"
+  },
+  "dependencies": {
+    "jose": "^6.2.12"
+  },
+  "devDependencies": {
+    "wrangler": "^4.149.0"
+  }
+}
