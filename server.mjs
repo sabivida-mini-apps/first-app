@@ -1,12 +1,12 @@
 // Node server for the starter partner app (e2e and local development).
-// Run: SABIVIDA_HOST=https://sabivida.com MINI_APP_ID=consulado node server.mjs
+// Run: SABIVIDA_HOST=https://app.sabivida.com MINI_APP_ID=consulado node server.mjs
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { createPartner } from './partner.mjs';
 
 const PORT = Number(process.env.PORT ?? 4319);
 const handle = createPartner({
-  host: process.env.SABIVIDA_HOST ?? 'https://sabivida.com',
+  host: process.env.SABIVIDA_HOST ?? 'https://app.sabivida.com',
   appId: process.env.MINI_APP_ID ?? 'starter',
   sdkUrl: process.env.SDK_URL,
   jwks: process.env.SABIVIDA_JWKS,
