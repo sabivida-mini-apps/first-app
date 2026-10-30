@@ -14,7 +14,14 @@ const TYPES = {
 // config: host (SabiVida origin), appId, sdkUrl (default: the host's SDK),
 // jwks (optional JSON string of public keys, for hosts behind an access gate),
 // readAsset(path) → file text or null.
+// SabiVida production moved from sabivida.com to app.sabivida.com: either may
+// frame the app, and launch tokens keep the https://sabivida.com issuer.
+const PRODUCTION = ['https://app.sabivida.com', 'https://sabivida.com'];
+
 export function createPartner({ host, appId, sdkUrl, jwks, readAsset }) {
+  const production = PRODUCTION.includes(host);
+  const parents = production ? PRODUCTION : [host];
+  const issuer = production ? 'https://sabivida.com' : host;
   const keys = jwks
     ? createLocalJWKSet(JSON.parse(jwks))
     : createRemoteJWKSet(new URL('/api/mini-apps/jwks.json', host));
@@ -23,7 +30,7 @@ export function createPartner({ host, appId, sdkUrl, jwks, readAsset }) {
   // them in its database.
   const used = new Map();
   const headers = {
-    'Content-Security-Policy': `frame-ancestors ${host}`,
+    'Content-Security-Policy': `frame-ancestors ${parents.join(' ')}`,
     'Cache-Control': 'no-store',
     'X-Content-Type-Options': 'nosniff',
   };
@@ -33,7 +40,7 @@ export function createPartner({ host, appId, sdkUrl, jwks, readAsset }) {
     if (raw.length > 8192) throw new Error('too large');
     const { token } = JSON.parse(raw);
     const { payload } = await jwtVerify(token, keys, {
-      issuer: host,
+      issuer,
       audience: appId,
       typ: 'sabivida-launch+jwt',
       algorithms: ['EdDSA'],
@@ -62,7 +69,9 @@ export function createPartner({ host, appId, sdkUrl, jwks, readAsset }) {
     if (body === null) return new Response(null, { status: 404, headers });
     const text =
       path === '/index.html'
-        ? body.replaceAll('__SDK_URL__', sdk).replaceAll('__SABIVIDA_HOST__', host)
+        ? body
+            .replaceAll('__SDK_URL__', sdk)
+            .replaceAll('__SABIVIDA_HOST__', production ? '' : host)
         : body;
     return new Response(text, { headers: { ...headers, 'Content-Type': type } });
   };

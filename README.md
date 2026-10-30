@@ -14,19 +14,19 @@ Prefer a framework? See [starter-react](https://github.com/sabivida-mini-apps/st
 
 ```sh
 npm install
-SABIVIDA_HOST=https://sabivida.com MINI_APP_ID=your-app-id npm start
+SABIVIDA_HOST=https://app.sabivida.com MINI_APP_ID=your-app-id npm start
 ```
 
 It serves your app on `http://localhost:4319`:
 
-- **Framing:** the page sends `Content-Security-Policy: frame-ancestors https://sabivida.com`, so only SabiVida can frame it.
-- **`POST /session`:** verifies the launch token against `https://sabivida.com/api/mini-apps/jwks.json`. It checks the issuer, your app id as audience, the `sabivida-launch+jwt` type, EdDSA, the 60-second age, and that each token is used only once.
+- **Framing:** the page sends `Content-Security-Policy: frame-ancestors https://app.sabivida.com https://sabivida.com`, so only SabiVida can frame it, from either host. The SDK script tag leaves `data-sabivida-host` empty, so the SDK talks to whichever of the two frames the app.
+- **`POST /session`:** verifies the launch token against `https://app.sabivida.com/api/mini-apps/jwks.json`. It checks the issuer (still `https://sabivida.com` on both hosts), your app id as audience, the `sabivida-launch+jwt` type, EdDSA, the 60-second age, and that each token is used only once.
 - **`public/app.js`:** signs the member in and suggests a plan step with `SabiVida.addTask`.
 
 ## Deploy to Cloudflare Workers
 
 ```sh
-npm run deploy -- --host https://sabivida.com --app your-app-id
+npm run deploy -- --host https://app.sabivida.com --app your-app-id
 ```
 
 To test against SabiVida's staging, ask the SabiVida team for the staging public keys and add `--jwks '<keys JSON>'`. Staging sits behind an access gate, so the app then verifies against those keys and serves its own copy of the SDK.
